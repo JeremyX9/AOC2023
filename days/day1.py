@@ -32,20 +32,20 @@ def solution_part2(input):
         row_dic = {}
         for key in dic_numbers:
             if (key in row):
-                row_dic[row.find(key)] = dic_numbers[key]
+                indexes = [x.start() for x in re.finditer(f'{key}', row)]
+                for index in indexes:
+                    row_dic[index] = dic_numbers[key]
         for char in row:
             if (char.isdigit()):
-                row_dic[row.find(char)] = char
+                indexes = [x.start() for x in re.finditer(f'{char}', row)]
+                for index in indexes:
+                    row_dic[index] = char
         dic_sorted = dict(sorted(row_dic.items()))
         min_value_key = list(dic_sorted)[0]
         max_value_key = list(dic_sorted)[-1]
         sum += int((row_dic.get(min_value_key) + row_dic.get(max_value_key)))
     return sum
         
-    
-            
-        
-
 input = get_input('./input')
 print(f'The Solution of part 1 is: {solution_part1(input)}')
 print(f'The Solution of part 2 is: {solution_part2(input)}')
