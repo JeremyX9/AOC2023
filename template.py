@@ -1,3 +1,4 @@
+import time
 def get_input(file):
     input = []
     with open(file) as f:
@@ -14,5 +15,7 @@ def solution_part2(input):
     return sum
 
 input = get_input('./input')
-print(f'The Solution of part 1 is: {solution_part1(input)}')
-print(f'The Solution of part 2 is: {solution_part2(input)}')
+timer = time.perf_counter()
+print(f'The Solution of part 1 is: {solution_part1(input)} | solved in {time.perf_counter()-timer:.5f}s')
+timer = time.perf_counter()
+print(f'The Solution of part 2 is: {solution_part2(input)} | solved in {time.perf_counter()-timer:.5f}s')
